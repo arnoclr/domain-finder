@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 8px;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+    [w] {
+        margin-top: 20vw;
+        max-width: 650px;
+        width: 100%;
+    }
+
+        #input {
+            width: 100%;
+            height: 48px;
+            padding: 8px 16px;
+            border: none;
+            font-family: 'Roboto';
+            font-size: 16px;
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.20);
+        }
+
+        #box {
+            width: 100%;
+        }
+
+            [b] {
+                width: 100%;
+                padding: 16px;
+                margin-top: 16px;
+                display: flex;
+                background-color: #fff;
+                box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.20);
+            }
+
+                [m] {
+                    width: 75%;
+                }
+                    [h1] {
+                        margin-top: 0;
+                        margin-bottom: 16px;
+                        display: block;
+                        font-size: 3rem;
+                        font-weight: 500;
+                        letter-spacing: 1px;
+                        color: #333;
+                        text-decoration: none;
+                    }
+
+                    a[l] {
+                        padding: 8px 12px;
+                        display: inline-block;
+                        text-decoration: none;
+                        background-color: #009688;
+                        color: #fff;
+                        border-radius: 2px;
+                        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.20);
+                    }
+
+                [p] {
+                    
+                }
+
+                    [a] {
+                        color: #333;
+                        font-size: 48px;
+                        font-weight: 500;
+                    }
+
+                    [c] {
+                        display: block;
+                        color: #333;
+                    }
