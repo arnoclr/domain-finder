@@ -120,3 +120,8 @@ input.addEventListener('keyup', () => {
     input.value = input.value.replace(/[^a-zA-Z0-9-_]/g, '-')
     find(2)
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('w').style.display = ''
+    document.getElementById('l').style.display = 'none'
+})
