@@ -3,7 +3,7 @@ var tldsAll = [] // All IANA registred LTDs
 const input = document.getElementById('input')
 const box = document.getElementById('box')
 
-fetch('https://raw.githack.com/arnoclr/domain-finder/main/assets/data.csv')
+fetch('https://domain-finder.arnocellarier.fr/assets/data.csv')
 .then(x => x.text())
 .then(data => {
     tlds = data.toLowerCase().split('\n')
