@@ -90,24 +90,30 @@ function listSimilarTlds() {
 function renderBox(domain = null, tld, price, match) {
     if(domain == undefined)
         return box.innerHTML = null
-    var html = 
-        `<div m>
+    var html = `<div m>`
+    if(domain.length <= 3) {
+        html += `<div class="d">
+            <span>Small domains are expensive</span>
+        </div>`
+    }
+    html += `
             <a h1 href="http://${domain}.${tld}" 
                 target="_blank">${domain}.${tld}
-                <span class="material-icons">open_in_new</span>
+                <i class="mdl2 mdl2-go" aria-hidden="true"></i>
             </a>`
     if(price) {
         html +=
         `<a href="https://domains.google.com/registrar/search?searchTerm=${domain}.${tld}"
-            target="_blank" l>Buy on Google domains</a>`
+            target="_blank" l>Buy on Google domains</a>
+        <p>Prices may vary depending on domain name and date.</p>`
     } else {
-        html += `<p>This domain isn't available on Google domains, but it exists. It can be available at registration or reserved.</p>`
+        html += `<p>This domain is correct but isn't available on Google domains. It can be available at registration or reserved.</p>`
     }
     html += `</div>`
     if(price) {
         html += 
             `<div p>
-                <span a>${price.amount} ${price.symbol}</span>
+                <span a>${price.amount}<sup>${price.symbol}</sup></span>
                 <span c>(${price.currency}) /y</span>
             </div>`
     }

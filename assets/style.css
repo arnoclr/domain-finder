@@ -3,79 +3,135 @@
 }
 
 body {
-    background-color: #eee;
-    display: flex;
-    justify-content: center;
+    background-color: #fff;
+    display: grid;
+    place-items: center;
     height: 100vh;
     margin: 0;
     padding: 8px;
-    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-    [w] {
-        margin-top: 20vw;
-        max-width: 650px;
-        width: 100%;
-    }
+[w] {
+    max-width: 650px;
+    width: 100%;
+}
 
-        #input {
-            width: 100%;
-            height: 48px;
-            padding: 8px 16px;
-            border: none;
-            font-family: 'Roboto';
-            font-size: 16px;
-            box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.20);
-        }
+.c {
+    box-shadow: 0 6px 23px 0 rgb(0 0 0 / 16%);
+}
 
-        #box {
-            width: 100%;
-        }
+#input {
+    width: 100%;
+    height: 48px;
+    padding: 8px 24px; 
+    border: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    background-color: #f5f5f5;
+}
 
-            [b] {
-                width: 100%;
-                padding: 16px;
-                margin-top: 16px;
-                display: flex;
-                background-color: #fff;
-                box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.20);
-            }
+#input:focus {
+    outline: 1px dashed #000;
+}
 
-                [m] {
-                    width: 75%;
-                }
-                    [h1] {
-                        margin-top: 0;
-                        margin-bottom: 16px;
-                        display: block;
-                        font-size: 3rem;
-                        font-weight: 500;
-                        letter-spacing: 1px;
-                        color: #333;
-                        text-decoration: none;
-                    }
+#box {
+    width: 100%;
+}
 
-                    a[l] {
-                        padding: 8px 12px;
-                        display: inline-block;
-                        text-decoration: none;
-                        background-color: #009688;
-                        color: #fff;
-                        border-radius: 2px;
-                        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.20);
-                    }
+[b] {
+    width: 100%;
+    padding: 24px;
+    margin-top: 0;
+    display: flex;
+    background-color: #fff;
+}
 
-                [p] {
-                    
-                }
+[m] {
+    width: 75%;
+}
 
-                    [a] {
-                        color: #333;
-                        font-size: 48px;
-                        font-weight: 500;
-                    }
+.d {
+    width: fit-content;
+    padding: 0 12px;
+    background-color: #ffd800;
+}
 
-                    [c] {
-                        display: block;
-                        color: #333;
-                    }
+.d span {
+    font-weight: 400;
+    line-height: 20px;
+    font-size: 13px;
+    height: 26px;
+    letter-spacing: .075em;
+    text-transform: uppercase;
+}
+
+[h1] {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    display: block;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+[h1]:hover {
+    text-decoration: underline;
+}
+
+[h1] .mdl2 {
+    font-size: 12px;
+}
+
+a[l] {
+    padding: 12px 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 600;
+    min-height: 44px;
+    color: #fff;
+    background-color: var(--primary);
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 0%);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+a[l]:hover {
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+}
+a[l]:active {
+    transform: scale(.98);
+}
+
+[a] {
+    color: #333;
+    font-size: 48px;
+    font-weight: 500;
+}
+
+[a] sup {
+    font-size: 28px;
+}
+
+[c] {
+    display: block;
+}
+
+.o {
+    position: fixed;
+    display: flex;
+    gap: 22px;
+    bottom: 8px;
+    right: 16px;
+}
+
+.o a {
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px dashed transparent;
+}
+
+.o a:hover {
+    border-bottom: 1px dashed #000;
+}
