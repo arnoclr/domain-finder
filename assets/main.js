@@ -2,6 +2,7 @@ var tlds = [] // Google domains supported LTDs
 var tldsAll = [] // All IANA registred LTDs
 const input = document.getElementById('input')
 const box = document.getElementById('box')
+const urlFrag = document.getElementById('url')
 
 fetch('https://domain-finder.arnocellarier.fr/assets/data.csv')
 .then(x => x.text())
@@ -10,6 +11,7 @@ fetch('https://domain-finder.arnocellarier.fr/assets/data.csv')
     tlds.forEach((s, i) => {
         tlds[i] = s.split(',')
     })
+    initSearch()
 })
 
 fetch('https://data.iana.org/TLD/tlds-alpha-by-domain.txt')
@@ -17,7 +19,17 @@ fetch('https://data.iana.org/TLD/tlds-alpha-by-domain.txt')
 .then(data => {
     tldsAll = data.toLocaleLowerCase().split('\n')
     tldsAll.shift()
+    initSearch()
 })
+
+function initSearch() {
+    const fragment = window.location.hash.substring(1)
+    if(fragment.includes('search=')) {
+        var search = fragment.split('=')[1]
+        input.value = search
+        find(2)
+    }
+}
 
 function splitAt(value, index) {
     return [value.substring(0, index), value.substring(index)]
@@ -124,6 +136,8 @@ input.addEventListener('keyup', () => {
     if(input.value.length <= 3)
         return box.innerText = null
     input.value = input.value.replace(/[^a-zA-Z0-9-_]/g, '-')
+    urlFrag.href = `#search=${input.value}`
+    urlFrag.click()
     find(2)
 })
 
