@@ -4,10 +4,12 @@
  * @returns {Response} JSON response
  */
 function responseJSON(jsonObject) {
-  return new Response(JSON.stringify(jsonObject), {
+  let response = new Response(JSON.stringify(jsonObject), {
     status: 200,
     headers: { 'Content-Type': 'application/json' },
   })
+  response.headers.set("Access-Control-Allow-Origin", "*")
+  return response
 }
 
 /**
