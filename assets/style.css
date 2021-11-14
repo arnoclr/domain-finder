@@ -95,7 +95,11 @@ a[l] {
     color: #fff;
     background-color: var(--primary);
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 0%);
-    transition: transform .2s ease, box-shadow .2s ease;
+    transition: transform .12s ease-in-out, box-shadow .12s ease;
+}
+a[l][disabled] {
+    pointer-events: none;
+    opacity: .5;
 }
 a[l]:hover {
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);

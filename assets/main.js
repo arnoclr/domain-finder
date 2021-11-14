@@ -43,6 +43,15 @@ function mode(arr) {
     ).pop()
 }
 
+// https://stackoverflow.com/a/1909508/11651419
+function delay(fn, ms) {
+    let timer = 0
+    return function(...args) {
+        clearTimeout(timer)
+        timer = setTimeout(fn.bind(this, ...args), ms || 0)
+    }
+}
+
 function find(n) {
     var parts = splitAt(input.value, input.value.length - n)
     var result = tlds.find(x => x[0] === '.' + parts[1])
@@ -99,47 +108,63 @@ function listSimilarTlds() {
         </div>`
 }
 
-function renderBox(domain = null, tld, price, match) {
+async function checkAvailability(domain, tld) {
+    try {
+        const url = `https://check-domain-availability.arnoclr.workers.dev/?domain=${domain}.${tld}`
+        const reponse = await fetch(url)
+        const data = await reponse.json()
+        return data
+    } catch (error) {
+        console.log(error)
+        return { error }
+    }
+}
+
+async function renderBox(domain = null, tld, price, match) {
     if(domain == undefined)
         return box.innerHTML = null
+
+    var domainInfo = await checkAvailability(domain, tld)
+
     var html = `<div m>`
-    if(domain.length <= 3) {
+    if (!domainInfo.available) {
+        html += `<div class="d">
+            <span>Domain already taken</span>
+        </div>`
+    } else if(domain.length <= 3) {
         html += `<div class="d">
             <span>Small domains are expensive</span>
         </div>`
     }
-    html += `
-            <a h1 href="http://${domain}.${tld}" 
-                target="_blank">${domain}.${tld}
-                <i class="mdl2 mdl2-go" aria-hidden="true"></i>
-            </a>`
+    html += `<a h1 href="http://${domain}.${tld}" 
+            target="_blank">${domain}.${tld}
+            <i class="mdl2 mdl2-go" aria-hidden="true"></i>
+        </a>`
     if(price) {
-        html +=
-        `<a href="https://domains.google.com/registrar/search?searchTerm=${domain}.${tld}"
-            target="_blank" l>Buy on Google domains</a>
+        html += `<a href="https://domains.google.com/registrar/search?searchTerm=${domain}.${tld}"
+            target="_blank" ${!domainInfo.available ? 'disabled' : ''} l>Buy on Google domains</a>
         <p>Prices may vary depending on domain name and date.</p>`
     } else {
         html += `<p>This domain is correct but isn't available on Google domains. It can be available at registration or reserved.</p>`
     }
     html += `</div>`
     if(price) {
-        html += 
-            `<div p>
-                <span a>${price.amount}<sup>${price.symbol}</sup></span>
-                <span c>(${price.currency}) /y</span>
-            </div>`
+        html += `<div p>
+            <span a>${price.amount}<sup>${price.symbol}</sup></span>
+            <span c>(${price.currency}) /y</span>
+        </div>`
     }
     return box.innerHTML = `<div b>${html}</div>`
 }
 
-input.addEventListener('keyup', () => {
+input.addEventListener('keyup', delay(() => {
     if(input.value.length <= 3)
         return box.innerText = null
     input.value = input.value.replace(/[^a-zA-Z0-9-_]/g, '-')
     urlFrag.href = `#search=${input.value}`
     urlFrag.click()
     find(2)
-})
+}, 500))
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('w').style.display = ''
