@@ -1,0 +1,8 @@
+name = "check-domain-availability"
+type = "javascript"
+
+account_id = "689d872a37564a5d504b7236458b95ac"
+workers_dev = true
+route = ""
+zone_id = ""
+compatibility_date = "2021-11-14"
